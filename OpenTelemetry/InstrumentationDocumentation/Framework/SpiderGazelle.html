@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../../../js/doc.js"></script>
 
   <meta name="repository-name" content="opentelemetry-instrumentation">
-  <title>OpenTelemetry::InstrumentationDocumentation::Framework::Lucky - opentelemetry-instrumentation main</title>
+  <title>OpenTelemetry::InstrumentationDocumentation::Framework::SpiderGazelle - opentelemetry-instrumentation main</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../../";
   </script>
@@ -121,12 +121,12 @@
       
         <ul>
   
-  <li class=" current" data-id="opentelemetry-instrumentation/OpenTelemetry/InstrumentationDocumentation/Framework/Lucky" data-name="opentelemetry::instrumentationdocumentation::framework::lucky">
+  <li class=" " data-id="opentelemetry-instrumentation/OpenTelemetry/InstrumentationDocumentation/Framework/Lucky" data-name="opentelemetry::instrumentationdocumentation::framework::lucky">
       <a href="../../../OpenTelemetry/InstrumentationDocumentation/Framework/Lucky.html">Lucky</a>
       
     </li>
   
-  <li class=" " data-id="opentelemetry-instrumentation/OpenTelemetry/InstrumentationDocumentation/Framework/SpiderGazelle" data-name="opentelemetry::instrumentationdocumentation::framework::spidergazelle">
+  <li class=" current" data-id="opentelemetry-instrumentation/OpenTelemetry/InstrumentationDocumentation/Framework/SpiderGazelle" data-name="opentelemetry::instrumentationdocumentation::framework::spidergazelle">
       <a href="../../../OpenTelemetry/InstrumentationDocumentation/Framework/SpiderGazelle.html">SpiderGazelle</a>
       
     </li>
@@ -160,12 +160,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">struct</span> OpenTelemetry::InstrumentationDocumentation::Framework::Lucky
+  <span class="kind">struct</span> OpenTelemetry::InstrumentationDocumentation::Framework::SpiderGazelle
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../../OpenTelemetry/InstrumentationDocumentation/Framework/Lucky.html">OpenTelemetry::InstrumentationDocumentation::Framework::Lucky</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../../OpenTelemetry/InstrumentationDocumentation/Framework/SpiderGazelle.html">OpenTelemetry::InstrumentationDocumentation::Framework::SpiderGazelle</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
 
 
 
@@ -179,32 +179,33 @@
     Overview
   </h2>
 
-  <h1><a id="open-telemetryinstrumentationframe-worklucky" class="anchor" href="#open-telemetryinstrumentationframe-worklucky">  <svg class="octicon-link" aria-hidden="true">
+  <h1><a id="open-telemetryinstrumentationframe-workspider-gazelle" class="anchor" href="#open-telemetryinstrumentationframe-workspider-gazelle">  <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
-</a>OpenTelemetry::Instrumentation::FrameWork::Lucky</h1>
+</a>OpenTelemetry::Instrumentation::FrameWork::SpiderGazelle</h1>
 <h3><a id="instruments" class="anchor" href="#instruments">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Instruments</h3>
 <ul>
-<li>Lucky::RouteHandler</li>
+<li>ActionController::Router::RouteHandler</li>
 </ul>
-<h3><a id="reference-httpsluckyframework.github.ioluckyluckyroute-handler.html" class="anchor" href="#reference-httpsluckyframework.github.ioluckyluckyroute-handler.html">
+<h3><a id="reference-action-controllerrouterroute-handler.cr" class="anchor" href="#reference-action-controllerrouterroute-handler.cr">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
-</a>Reference: <a href="https://luckyframework.github.io/lucky/Lucky/RouteHandler.html">https://luckyframework.github.io/lucky/Lucky/RouteHandler.html</a></h3>
-<p>Autoinstrumentation for Lucky is pretty minimal. Other core instrumentation handles most of
-the heavy lifting. This instrumentation package supplements that work my adding the <em>http.route</em>
+</a>Reference: <a href="https://github.com/spider-gazelle/action-controller/blob/master/src/action-controller/router/route_handler.cr">action-controller/router/route_handler.cr</a></h3>
+<p>Autoinstrumentation for Spider-Gazelle is pretty minimal. Other core instrumentation handles most of
+the heavy lifting. This instrumentation package supplements that work by adding the <em>http.route</em>
 attribute to the RouteHandler span, if there is a route to be added.</p>
-<p>To instrument a Lucky application, add the following requires to your <em>src/start_server.cr</em> file:</p>
-<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;opentelemetry-instrumentation&quot;</span>
+<p>To instrument a Spider-Gazelle application, add the following requires to your <em>src/config.cr</em> file:</p>
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;action-controller&quot;</span>
+<span class="k">require</span> <span class="s">&quot;opentelemetry-instrumentation&quot;</span>
 <span class="k">require</span> <span class="s">&quot;opentelemetry-instrumentation/src/opentelemetry/instrumentation/**&quot;</span></code></pre>
 <p>After adding that, add a stanza to do some basic configuration of the OpenTelemetry framework:</p>
 <pre><code class="language-crystal"><span class="t">OpenTelemetry</span>.configure <span class="k">do</span> <span class="o">|</span>config<span class="o">|</span>
-  config.service_name <span class="o">=</span> <span class="s">&quot;My Lucky App&quot;</span>
+  config.service_name <span class="o">=</span> <span class="s">&quot;My Spider-Gazelle App&quot;</span>
   config.service_version <span class="o">=</span> <span class="s">&quot;1.0.0&quot;</span>
   config.exporter <span class="o">=</span> <span class="t">OpenTelemetry</span><span class="t">::</span><span class="t">Exporter</span>.<span class="k">new</span>(variant: <span class="n">:http</span>) <span class="k">do</span> <span class="o">|</span>exporter<span class="o">|</span>
     exporter <span class="o">=</span> exporter.<span class="k">as</span>(<span class="t">OpenTelemetry</span><span class="t">::</span><span class="t">Exporter</span><span class="t">::</span><span class="t">Http</span>)
@@ -224,7 +225,7 @@ ingest of OpenTelemetry.</p>
   </svg>
 </a>Methods Affected</h2>
 <ul>
-<li>Lucky::RouteHandler#call</li>
+<li>ActionController::Router::RouteHandler#process_request</li>
 </ul>
 
 
@@ -250,8 +251,8 @@ ingest of OpenTelemetry.</p>
   </h2>
   
     
-      <a href="https://github.com/caspiano/opentelemetry-instrumentation.cr/blob/f16ba34dfb08f45834eea55b0ed5ce30a8fb61e2/src/opentelemetry/instrumentation/frameworks/lucky.cr#L46" target="_blank">
-        opentelemetry/instrumentation/frameworks/lucky.cr
+      <a href="https://github.com/caspiano/opentelemetry-instrumentation.cr/blob/f16ba34dfb08f45834eea55b0ed5ce30a8fb61e2/src/opentelemetry/instrumentation/frameworks/spider-gazelle.cr#L47" target="_blank">
+        opentelemetry/instrumentation/frameworks/spider-gazelle.cr
       </a>
     
     <br/>
@@ -358,7 +359,7 @@ ingest of OpenTelemetry.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/caspiano/opentelemetry-instrumentation.cr/blob/f16ba34dfb08f45834eea55b0ed5ce30a8fb61e2/src/opentelemetry/instrumentation/frameworks/lucky.cr#L46" target="_blank">View source</a>]
+          [<a href="https://github.com/caspiano/opentelemetry-instrumentation.cr/blob/f16ba34dfb08f45834eea55b0ed5ce30a8fb61e2/src/opentelemetry/instrumentation/frameworks/spider-gazelle.cr#L47" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -388,7 +389,7 @@ ingest of OpenTelemetry.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/caspiano/opentelemetry-instrumentation.cr/blob/f16ba34dfb08f45834eea55b0ed5ce30a8fb61e2/src/opentelemetry/instrumentation/frameworks/lucky.cr#L46" target="_blank">View source</a>]
+          [<a href="https://github.com/caspiano/opentelemetry-instrumentation.cr/blob/f16ba34dfb08f45834eea55b0ed5ce30a8fb61e2/src/opentelemetry/instrumentation/frameworks/spider-gazelle.cr#L47" target="_blank">View source</a>]
         
       </div>
     </div>
